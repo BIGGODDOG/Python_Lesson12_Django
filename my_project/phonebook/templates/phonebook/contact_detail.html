@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ contact.name }}{% endblock %}
+
+{% block content %}
+<div>
+    <h2>{{ contact.name }} {{ contact.second_name }}</h2>
+    <p>Contact phone: {{ contact.contact_phone }}</p>
+    <p>Email: {{ contact.email }}</p>
+    <p>Description: {{ contact.description }}</p>
+
+</div>
+<a href="{% url 'contact_list' %}">Назад к списку контактов</a>
+{% endblock %}

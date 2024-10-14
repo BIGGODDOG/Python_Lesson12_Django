@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}All Contacts{% endblock %}
+
+{% block content %}
+<div>
+    {% for contact in contacts %}
+    <div>
+        <h2><a href="{% url 'contact_detail' contact.id %}">{{ contact.name }} {{ contact.second_name }}</a></h2>
+        <p>Phone number: {{ contact.contact_phone }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
