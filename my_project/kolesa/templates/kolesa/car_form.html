@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ car.model }}{% endblock %}
+
+{% block content %}
+<div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+<a href="{% url 'car_list' %}">Назад к списку машин</a>
+{% endblock %}

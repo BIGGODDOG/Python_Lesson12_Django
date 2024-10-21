@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ car.make }}{% endblock %}
+
+{% block content %}
+<div>
+    <h2>{{ car.make }}, {{ car.model }}</h2>
+    <p>Year: {{ car.year }}</p>
+    <p>Price: {{ car.price }}</p>
+    <p>Stock: {{ car.in_stock }}</p>
+
+</div>
+<a href="{% url 'car_list' %}">Назад к списку машин</a>
+{% endblock %}

@@ -3,6 +3,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class RoomManager(models.Manager):
+    def available(self):
+        return self.filter(availability=True)
+    
+    def by_category(self, category_name):
+        return self.filter(category_id__name=category_name)
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -15,6 +22,10 @@ class Room(models.Model):
     # price = models.DecimalField(max_digits=5, decimal_places=2)
     price = models.IntegerField()
     category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    image = models.ImageField(upload_to="room_images/", blank=True, null=True)
+
+    objects = RoomManager()
 
     def __str__(self):
         return f"Room: {self.name}"

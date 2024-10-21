@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path
 from phonebook.views import contact_delete, contact_list, contact_detail, contact_create, contact_update
 
 urlpatterns = [

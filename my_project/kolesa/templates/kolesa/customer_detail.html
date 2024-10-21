@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ customer.make }}{% endblock %}
+
+{% block content %}
+<div>
+    <h2>{{ customer.first_name }}, {{ customer.last_name }}</h2>
+    <p>Email: {{ customer.email  }}</p>
+    {% for car in customer.purchased_cars.all %}
+    <div>
+        <p>{{ car.make }} {{ car.model }} ({{ car.year }}): {{ car.price }}</p>
+    </div>
+    {% endfor %}
+
+</div>
+<a href="{% url 'customer_list' %}">Назад к списку Customers</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}All Cars{% endblock %}
+
+{% block content %}
+<div>
+    {% for car in cars %}
+    <div>
+        <h2><a href="{% url 'car_detail' car.id %}">{{ car.make }} {{ car.model }} ({{ car.year }}) - {{ car.price }}</a></h2>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
