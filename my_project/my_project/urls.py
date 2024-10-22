@@ -24,7 +24,9 @@ urlpatterns = [
     path("", include("kolesa.urls")),
     path("", include("booking_service.urls")),
     path("", include("phonebook.urls")),
-    path("api/", include("drf_app.urls"))
+    # path("api/", include("drf_app.urls")),
+    # path("api/", include("ecom.urls")),
+    path("api/", include("drf_practice.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
