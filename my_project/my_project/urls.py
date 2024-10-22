@@ -22,8 +22,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("kolesa.urls")),
-    # path("", include("booking_service.urls")),
-    # path("", include("phonebook.urls"))
+    path("", include("booking_service.urls")),
+    path("", include("phonebook.urls")),
+    path("api/", include("drf_app.urls"))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required, permission_required, 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.http import JsonResponse
 # from booking_service.signal import my_signal
 # Create your views here.
 
@@ -134,10 +135,13 @@ def check_availability(request):
         available_rooms = get_available_rooms(start_date, end_date)
 
     response = render(request, "booking_service/check_availability.html", {"form": form, "available_rooms": available_rooms})
+
+    # Работа с Cookies
     # response.set_cookie("my_cookie", "19")
     # response.set_signed_cookie("my_cookie", "19", salt="123sqadqwe")
     # cookies = request.COOKIES
     # my_cookie = request.get_signed_cookie("cookie_key")
+
     return response
 
 def register(request):
@@ -151,3 +155,11 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, "booking_service/register.html", {"form": form})
 
+
+
+def get_json_rooms(request):
+    objects = Room.objects.all()
+
+    data = [{"id": obj.id, "name": obj.name} for obj in objects]
+
+    return JsonResponse(data, safe=False)

@@ -9,6 +9,8 @@ class RoomManager(models.Manager):
     
     def by_category(self, category_name):
         return self.filter(category_id__name=category_name)
+    
+    
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
